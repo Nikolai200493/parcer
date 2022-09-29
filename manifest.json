@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "Data parser",
+  "description": "Get data from pages and send to server",
+  "version": "1",
+  "browser_action": {
+    "default_icon": "tab-icon.png",
+    "default_title": "Data parser",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "http://94.124.194.60:8485/index.php/FileController/UploadFileForm",
+    "https://tektorg.ru/*",
+    "https://www.b2b-center.ru/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.tektorg.ru/*", "https://www.b2b-center.ru/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
